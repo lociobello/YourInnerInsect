@@ -28,7 +28,7 @@ async function firebaseSetup() {
   const database = getDatabase(app);
 
   const prova = ref(database, "risultati");
-  console.log(prova);
+  // console.log(prova);
 
   let data = {
     name: "lociobello",
