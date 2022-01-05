@@ -16,21 +16,29 @@ function preload() {
     heads[i] = loadImage("assets/parts/head/head-" + i + ".png");
     ants[i] = loadImage("assets/parts/ant/ant-" + i + ".png");
   }
+
+  centuryR = loadFont("assets/fonts/century-schoolbook/cen-schlbk-r.TTF");
+  centuryI = loadFont("assets/fonts/century-schoolbook/cen-schlbk-i.TTF");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(200);
+}
+
+function draw() {
+  background(255, 252, 241);
 
   let Insects = archive.insects;
 
   for (let i = 0; i < Insects.length; i++) {
     translate(200, 0);
     textAlign(CENTER);
+    textFont(centuryI);
     textSize(20);
-    text(Insects[i].name, 0, 100);
+    text(Insects[i].name, 0, 360);
+    textFont(centuryR);
     textSize(14);
-    text(Insects[i].date, 0, 130);
+    text(Insects[i].date, 0, 390);
 
     let Chest = Insects[i].parts[0];
     let Butt = Insects[i].parts[1];
@@ -40,51 +48,53 @@ function setup() {
 
     imageMode(CENTER);
 
+    //LEG
+    image(
+      legs[Leg.leg],
+      0,
+      200,
+      legs[Leg.leg].width / 4.6,
+      legs[Leg.leg].height / 4.6
+    );
+
     //ANT
     image(
       ants[Ant.ant],
       0,
-      400,
-      ants[Ant.ant].width / 3,
-      ants[Ant.ant].height / 3
+      200,
+      ants[Ant.ant].width / 4.6,
+      ants[Ant.ant].height / 4.6
     );
 
     //HEAD
     image(
       heads[Head.head],
       0,
-      400,
-      heads[Head.head].width / 3,
-      heads[Head.head].height / 3
-    );
-
-    //LEG
-    image(
-      legs[Leg.leg],
-      0,
-      400,
-      legs[Leg.leg].width / 3,
-      legs[Leg.leg].height / 3
+      200,
+      heads[Head.head].width / 4.6,
+      heads[Head.head].height / 4.6
     );
 
     //BUTT
     image(
       butts[Butt.butt],
       0,
-      400,
-      butts[Butt.butt].width / 3,
-      butts[Butt.butt].height / 3
+      200,
+      butts[Butt.butt].width / 4.6,
+      butts[Butt.butt].height / 4.6
     );
 
     //CHEST
     image(
       chests[Chest.chest],
       0,
-      400,
-      chests[Chest.chest].width / 3,
-      chests[Chest.chest].height / 3
+      200,
+      chests[Chest.chest].width / 4.6,
+      chests[Chest.chest].height / 4.6
     );
   }
 }
 
-function draw() {}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
